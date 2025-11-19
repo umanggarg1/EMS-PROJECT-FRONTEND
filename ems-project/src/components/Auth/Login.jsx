@@ -1,0 +1,56 @@
+import React, { useState } from 'react'
+
+
+function Login() {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const submitHandler = (e) => {
+    console.log("Submitted")
+    setEmail("")
+    setPassword("")
+  }
+
+  return (
+    <div className='flex h-screen w-screen items-center justify-center'>
+      <div className='border-2 rounded-xl border-emerald-600 p-20'>
+        <form
+          className='flex flex-col gap-4 items-center justify-center'
+          onSubmit={(e) => {
+            e.preventDefault()
+            submitHandler(e)
+          }}
+        >
+
+          <input required
+          value={email}
+          className='outline-none bg-transparent border-2 border-emerald-600 font-medium text-lg py-2 px-6 rounded-full placeholder:text-gray-400'
+          onChange={() =>
+          {
+            setEmail(e.target.value)
+          }} 
+          type="email" placeholder="Enter your Email" />
+
+          <input required
+          value={password}
+          className='outline-none bg-transparent border-2 border-emerald-600 font-medium text-lg py-2 px-6 rounded-full mt-3 placeholder:text-gray-400'
+          onChange={() =>
+          {
+            setPassword(e.target.value)
+          }}
+          type="password" placeholder="Enter your Password" />
+
+          <button 
+          className='mt-7 text-white border-none outline-none hover:bg-emerald-700 font-semibold bg-emerald-600 text-lg py-2 px-8 w-full rounded-full placeholder:text-white'
+          type="submit">
+            Login
+          </button>
+
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default Login
